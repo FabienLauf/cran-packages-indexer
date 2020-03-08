@@ -1,0 +1,45 @@
+[{
+  "_class": "com.fabienlauf.pelago.challenge.backend.cranpackagesindexer.model.CranPackage",
+  "name": "shape",
+  "version": "1.4.4",
+  "date": "2017-05-20",
+  "title": "Shape TITLE",
+  "description": "Lahlahahal sHSpaeh shape d",
+  "authors":  [
+    {
+      "_class": "com.fabienlauf.pelago.challenge.backend.cranpackagesindexer.model.Contact",
+      "name": "Katalin Csillery",
+      "email": ""
+    }
+  ],
+  "maintainers": [
+    {
+      "_class": "com.fabienlauf.pelago.challenge.backend.cranpackagesindexer.model.Contact",
+      "name": "Michael Blum",
+      "email": "michael.blum@imag.fr"
+    }
+  ]
+},
+{
+  "_class": "com.fabienlauf.pelago.challenge.backend.cranpackagesindexer.model.CranPackage",
+  "name": "seqHMM",
+  "version": "1.0.14",
+  "date": "2017-05-20",
+  "title": "seqHMM TITLE",
+  "description": "sdnjh jhsd seqHMM ks",
+  "authors":  [
+    {
+      "_class": "com.fabienlauf.pelago.challenge.backend.cranpackagesindexer.model.Contact",
+      "name": "Olivier Francois",
+      "email": ""
+    }
+  ],
+  "maintainers": [
+    {
+      "_class": "com.fabienlauf.pelago.challenge.backend.cranpackagesindexer.model.Contact",
+      "name": "Katalin Csillery",
+      "email": "Katalin.Csillery@gmail.com"
+    }
+  ]
+}
+]
