@@ -12,6 +12,7 @@ import java.util.List;
 @Setter
 @ToString(exclude = {"id"})
 public class CranPackage {
+
     @Id
     private String id;
     private String name;
@@ -23,6 +24,10 @@ public class CranPackage {
     private List<Contact> maintainers;
 
     public CranPackage() {
+    }
+
+    public CranPackage(String name) {
+        this.name = name;
     }
 
     public CranPackage(String name, String version, Date date, String title, String description, List<Contact> authors, List<Contact> maintainers) {

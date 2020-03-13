@@ -19,7 +19,7 @@ public class SearchController {
 
     @GetMapping("")
     public List<CranPackage> byName(@RequestParam String q) {
-        return cranPackageRepository.findByNameRegexIgnoreCase(q);
+        return cranPackageRepository.findAllByNameRegexIgnoreCase(q);
     }
 
     @GetMapping("/all")
