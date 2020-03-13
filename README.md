@@ -25,6 +25,7 @@ Workflow:
      7. Persist the POJO in MongoDB
  2. When 50 packages have been saved in DB, the routing stops.
  3. Tomcat starts and user can hit the search URL: http://localhost:8080/search?q=s
+ 4. The search is by regex and case insensitive.
  
 ## Build
 
