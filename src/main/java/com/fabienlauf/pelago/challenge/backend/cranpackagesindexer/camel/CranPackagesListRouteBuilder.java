@@ -1,6 +1,7 @@
 package com.fabienlauf.pelago.challenge.backend.cranpackagesindexer.camel;
 
-import com.fabienlauf.pelago.challenge.backend.cranpackagesindexer.camel.processor.DescriptionToCranPackageProcessor;
+import com.fabienlauf.pelago.challenge.backend.cranpackagesindexer.camel.processor.DescriptionMapToCranPackageProcessor;
+import com.fabienlauf.pelago.challenge.backend.cranpackagesindexer.camel.processor.DescriptionStrToMapProcessor;
 import com.fabienlauf.pelago.challenge.backend.cranpackagesindexer.camel.processor.NormalizeDescriptionProcessor;
 import com.fabienlauf.pelago.challenge.backend.cranpackagesindexer.camel.processor.PackageListingToUrlProcessor;
 import com.fabienlauf.pelago.challenge.backend.cranpackagesindexer.camel.processor.PersistCranPackageProcessor;
@@ -28,15 +29,22 @@ public class CranPackagesListRouteBuilder extends RouteBuilder {
 
     private PackageListingToUrlProcessor packageListingToUrlProcessor;
     private NormalizeDescriptionProcessor normalizeDescriptionProcessor;
-    private DescriptionToCranPackageProcessor descriptionToCranPackageProcessor;
+    private DescriptionStrToMapProcessor descriptionStrToMapProcessor;
+    private DescriptionMapToCranPackageProcessor descriptionMapToCranPackageProcessor;
     private PersistCranPackageProcessor persistCranPackageProcessor;
 
     @Autowired
-    public CranPackagesListRouteBuilder(@Value("${maxNbPackages}") Integer maxNbPackages, PackageListingToUrlProcessor packageListingToUrlProcessor, NormalizeDescriptionProcessor normalizeDescriptionProcessor, DescriptionToCranPackageProcessor descriptionToCranPackageProcessor, PersistCranPackageProcessor persistCranPackageProcessor) {
+    public CranPackagesListRouteBuilder(@Value("${maxNbPackages}") Integer maxNbPackages,
+                                        PackageListingToUrlProcessor packageListingToUrlProcessor,
+                                        NormalizeDescriptionProcessor normalizeDescriptionProcessor,
+                                        DescriptionStrToMapProcessor descriptionStrToMapProcessor,
+                                        DescriptionMapToCranPackageProcessor descriptionMapToCranPackageProcessor,
+                                        PersistCranPackageProcessor persistCranPackageProcessor) {
         this.maxNbPackages = maxNbPackages;
         this.packageListingToUrlProcessor = packageListingToUrlProcessor;
         this.normalizeDescriptionProcessor = normalizeDescriptionProcessor;
-        this.descriptionToCranPackageProcessor = descriptionToCranPackageProcessor;
+        this.descriptionStrToMapProcessor = descriptionStrToMapProcessor;
+        this.descriptionMapToCranPackageProcessor = descriptionMapToCranPackageProcessor;
         this.persistCranPackageProcessor = persistCranPackageProcessor;
     }
 
@@ -72,7 +80,8 @@ public class CranPackagesListRouteBuilder extends RouteBuilder {
                 .streaming()
                 .choice().when(header("CamelTarFileEntryName").endsWith("DESCRIPTION"))
                     .process(normalizeDescriptionProcessor)
-                    .process(descriptionToCranPackageProcessor)
+                    .process(descriptionStrToMapProcessor)
+                    .process(descriptionMapToCranPackageProcessor)
                     .to(PERSIST_CRAN_PACKAGE_ROUTE_URI);
 
         from(PERSIST_CRAN_PACKAGE_ROUTE_URI).routeId(PERSIST_CRAN_PACKAGE_ROUTE_ID)

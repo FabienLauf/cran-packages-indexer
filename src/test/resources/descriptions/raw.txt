@@ -2,7 +2,7 @@ Package: abc
 Version: 1.6
 Date: 2012-16-02
 Title: Tools for Approximate Bayesian Computation (ABC)
-Author: Katalin Csillery [aut, cre], Michael Blum [ctb] and Olivier Francois <lerch@mathematik.uni-marburg.gouv>
+Author: Katalin Csillery [aut, cre], Michael Blum [ctb] and Olivier Francois <lerch@mathematik.uni6-marburg.mobi>
 Maintainer: Michael Blum <michael.blum@imag.fr>
 Depends: R (>= 2.10), MASS, nnet, quantreg, locfit
 Description: The package implements several ABC algorithms for performing parameter
